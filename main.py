@@ -231,6 +231,7 @@ def selectFunction_mousePressed(app, event):
         29*app.height/32 <= event.y <= 31*app.height/32):
         app.mode = 'sandboxSplash'
         app.functionstr = ''
+        app.cursor = 143
     if (app.width/8 <= event.x <= 7*app.width/8 and
         80 <= event.y <= 130):
         app.color1 = app.buttonselected
@@ -282,13 +283,17 @@ def selectFunction_keyPressed(app, event):
     variables = {'(', ')', '*', '+', '-', '/'}
     no = {'Backspace', 'Enter', 'Return', 'Escape', 'Tab', 'Up', 'Left', 'Right', 'Down'}
     if event.key == 'Backspace':
+        if len(app.functionstr) > 0:
+            app.cursor -= 12
         app.functionstr = app.functionstr[:len(app.functionstr) - 1]
-    if len(app.functionstr) >= 50 or event.key.isalpha() and event.key.isupper() or event.key in no:
+    if len(app.functionstr) >= 65 or event.key.isalpha() and event.key.isupper() or event.key in no:
         return
     elif event.key == 'Space':
         app.functionstr += ' '
+        app.cursor += 12
     elif event.key.isalnum() or event.key in variables:
         app.functionstr += event.key
+        app.cursor += 12
     app.color1 = app.buttonfill
     app.color2 = app.buttonfill
     app.color3 = app.buttonfill
@@ -342,6 +347,9 @@ def selectFunction_redrawAll(app, canvas):
     canvas.create_text(app.width/8 + 10, 480,
                        text = f'f(x,y,z) = {app.functionstr}', anchor = 'w',
                        font = 'Courier 15 bold', fill = app.textcolor)
+
+    canvas.create_line(app.width/8 + app.cursor, 492, app.width/8 + app.cursor + 10, 492,
+                       fill = app.textcolor, width = 2)
     
     # Visualize
     canvas.create_rectangle(3*app.width/8, 14*app.height/16, 5*app.width/8, 31*app.height/32,
@@ -661,6 +669,7 @@ def appStarted(app):
     app.color4 = app.buttonfill
     app.color5 = app.buttonselected
     app.functionimplement = app.functionstr
+    app.cursor = 143
     
     # Initialize size
     app.x, app.y, app.z = 9,9,9 # Increasing = better resolution, runs slower
