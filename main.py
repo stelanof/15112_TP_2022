@@ -103,6 +103,7 @@ def sandboxSplash_timerFired(app):
     updateValues(app)
 
 def sandboxSplash_mousePressed(app, event):
+
     # Back
     if (app.width/32 <= event.x <= app.width/8 and
         29*app.height/32 <= event.y <= 31*app.height/32):
@@ -122,6 +123,13 @@ def sandboxSplash_mousePressed(app, event):
                         app.state.append(1)
                     else:
                         app.state.append(0)
+        count = 0
+        for i in range(app.x):
+            for j in range(app.y):
+                for k in range(app.z):
+                    app.points[count] = [i - app.x//2, app.y//2 - j, k - app.z//2]
+                    count += 1
+        app.points = app.points * app.rotateZ
 
     # 3d
     if (9*app.width/16 <= event.x <= 13*app.width/16 and
@@ -132,6 +140,13 @@ def sandboxSplash_mousePressed(app, event):
         app.color3 = app.buttonfill
         app.color4 = app.buttonfill
         app.color5 = app.buttonselected
+        count = 0
+        for i in range(app.x):
+            for j in range(app.y):
+                for k in range(app.z):
+                    app.points[count] = [i - app.x//2, app.y//2 - j, k - app.z//2]
+                    count += 1
+        app.points = app.points * app.rotateZ
     
 def sandboxSplash_redrawAll(app, canvas):
     canvas.create_rectangle(0, 0, app.width, app.height, fill = app.bgcolor)
@@ -231,6 +246,7 @@ def selectFunction_mousePressed(app, event):
         29*app.height/32 <= event.y <= 31*app.height/32):
         app.mode = 'sandboxSplash'
         app.functionstr = ''
+        app.functionimplement = ''
         app.cursor = 143
     if (app.width/8 <= event.x <= 7*app.width/8 and
         80 <= event.y <= 130):
@@ -496,8 +512,8 @@ def randomPerlin(app):
     posx = random.uniform(-100, 100)
     posy = random.uniform(-100, 100)
     a = random.uniform(0,1)
-    b = random.uniform(0,1)
-    c = random.uniform(0,1)
+    b = random.uniform(0,0.5)
+    c = random.uniform(0,0.5)
     for i in range(app.size):
         for j in range(app.size):
             x = (j + posx)/app.size - 0.5
