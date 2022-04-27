@@ -379,7 +379,7 @@ def visualizeMarching_keyPressed(app, event):
         app.surface += app.change
     if event.key == 's' and app.surface > app.min:
         app.surface -= app.change
-    if event.key == 'p':
+    if event.key == 'Space':
         app.removing = not app.removing
     if event.key == 'r':
         count = 0
@@ -443,7 +443,7 @@ def visualizeMarching_redrawAll(app, canvas):
                        text = 'S: Decrease Surface Level',
                        font = 'Courier 12 bold', fill = app.textcolor)
     canvas.create_text(7*app.width/8 - 10, 120,
-                       text = 'P: Toggle Adding/Removing',
+                       text = 'Space: Toggle Remove',
                        font = 'Courier 12 bold', fill = app.textcolor)
     canvas.create_text(7*app.width/8 - 10, 140,
                        text = 'R: Reset Rotation',
@@ -509,6 +509,7 @@ def heightMap_keyPressed(app, event):
         resetMap(app)
     if event.key == 'p':
         randomPerlin(app)
+        updateState(app)
 
 def heightMap_redrawAll(app, canvas):
     canvas.create_rectangle(0, 0, app.width, app.height, fill = app.bgcolor)
@@ -746,4 +747,4 @@ def appStarted(app):
 
 
 
-runApp(width=1000,height=600)
+runApp(width=1250,height=750)

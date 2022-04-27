@@ -87,13 +87,9 @@ def getCoords(zvalues):
 # http://paulbourke.net/geometry/polygonise/
 def drawTriangles(app, canvas):
     paintersTriangles = []
-    for x in range(app.x):
-        for y in range(app.y):
-            for z in range(app.z):
-                if (x % app.x == app.x - 1 or
-                   y % app.y == app.y - 1 or
-                   z % app.z == app.z - 1):
-                    continue
+    for x in range(app.x - 1):
+        for y in range(app.y - 1):
+            for z in range(app.z - 1):
                 corners, state, zvalues = getPoints(app, x, y, z)
                 edges = getEdges(app, corners, state)
                 coords = getCoords(zvalues)
