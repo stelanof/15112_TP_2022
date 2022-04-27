@@ -753,10 +753,10 @@ def appStarted(app):
     # Images
 
     # Light Mode/Dark Mode
-    # Image from https://icon-icons.com/icon/sun-day-weather-symbol/73146
+    # Image from Catalin Fertu https://icon-icons.com/icon/sun-day-weather-symbol/73146
     app.image1 = app.loadImage('lightmode.png')
     app.imagelight = app.scaleImage(app.image1, 1/10)
-    # Image from https://icon-icons.com/icon/moon-dark-mode-night-mode/190939
+    # Image from paulolardet https://icon-icons.com/icon/moon-dark-mode-night-mode/190939
     app.image2 = app.loadImage('darkmode.png')
     app.imagedark = app.scaleImage(app.image2, 1/12)
 
