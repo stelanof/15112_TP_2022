@@ -4,7 +4,7 @@ Marching Cubes 112 is a terrain visualizer that uses the Marching Cubes Algorith
 
 To run this program, first install numpy and opensimplex libraries. Then, access 'main.py' in your editor to start the program. Note: all python files and images included are necessary for this program to run properly.
 
-Video Demo:
+Video Demo: https://youtu.be/W4BxtNY1PC4
 
 Have fun! - Samuel Telanoff 4/26/2022
 
