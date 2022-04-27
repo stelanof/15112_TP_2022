@@ -7,3 +7,9 @@ To run this program, first install numpy and opensimplex libraries. Then, access
 Video Demo:
 
 Have fun! - Samuel Telanoff 4/26/2022
+
+Learning resources: http://www.cs.cmu.edu/~112/ https://people.eecs.berkeley.edu/~jrs/meshpapers/LorensenCline.pdf http://paulbourke.net/geometry/polygonise/ https://en.wikipedia.org/wiki/3D_projection http://jamie-wong.com/2014/08/19/metaballs-and-marching-squares/ https://www.redblobgames.com/maps/terrain-from-noise/
+
+Inspired by:
+Sebastian Lague - https://youtu.be/M3iI2l0ltbE https://github.com/SebLague/Marching-Cubes
+Adi Kambhampaty - https://youtu.be/Au4fr04Hw3A
